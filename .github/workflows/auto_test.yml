@@ -1,9 +1,6 @@
 name: Auto-Test
 
-on:
-  push:
-    paths:
-      - 'app/**'
+on: [push]
 
 jobs:
   test:
