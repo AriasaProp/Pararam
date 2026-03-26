@@ -1,6 +1,10 @@
 name: Auto-Test
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -10,30 +14,47 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6.0.2
-      - name: Gradle Prep
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '18'
+      - name: Set up Gradle CLI
         uses: gradle/actions/setup-gradle@v5
         with:
           gradle-version: current
-      - name: Update Gradle Wrapper
+      - name: Update Gradle Wrapper to latest
+        id: update_wrapper
         run: |
-          if ! gradle wrapper --gradle-version latest; then
-            echo "Update Wrapper Failure"
+          set -euo pipefail
+          if gradle wrapper --gradle-version latest; then
+            echo "gradle-wrapper update command succeeded"
+          else
+            echo "Gradle wrapper update command failed"
             exit 1
           fi
-          if ! git add .; then
-            echo "No update"
-            exit 0
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git status --porcelain
+          if ! git diff --quiet --exit-code -- .; then
+            git add gradlew gradlew.bat gradle/wrapper gradle-wrapper.properties || true
+            git config user.name "AriasaProp-Actions"
+            git config user.email "ikomangwidiadaariasa12@gmail.com"
+            git commit -m "chore: update Gradle wrapper to latest"
+            git push origin HEAD:${{ github.ref_name }}
           fi
-          git config --global user.email "ikomangwidiadaariasa12@gmail.com"
-          git config --global user.name "AriasaProp-Actions"
-          git commit -m "update gradle wrapper"
-          git push
+
       - name: Build
         if: always()
-        run: gradle build --warning-mode all
-      - name: Upload
+        run: ./gradlew build --warning-mode all
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v7
         with:
           name: APK
-          path: ${{ github.workspace }}/app/build/outputs/apk/release/app-release.apk
+          path: app/build/outputs/apk/release/app-release.apk

@@ -1,10 +1,12 @@
+import org.gradle.api.tasks.Delete
+
 buildscript {
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:9.1.0'
+        classpath("com.android.tools.build:gradle:9.1.0")
     }
 }
 
@@ -15,7 +17,6 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+tasks.register<Delete>("clean") {
+    delete(rootProject.buildDir)
 }
-
