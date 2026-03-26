@@ -1,3 +1,4 @@
 include ':app'
 
-rootProject.name = 'AriasaProp-AndroidLauncher'
+rootProject.name = 'Pararam'
+rootProject.comp = 'com.ariasaproject.pararam'

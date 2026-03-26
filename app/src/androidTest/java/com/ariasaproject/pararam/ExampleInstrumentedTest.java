@@ -1,4 +1,4 @@
-package com.ariasaroject.androidlauncher;
+package com.ariasaroject.pararam;
 
 import static org.junit.Assert.*;
 
@@ -14,6 +14,6 @@ public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() throws Exception {
         Context appContext = InstrumentationRegistry.getTargetContext();
-        assertEquals("com.ariasaroject.androidlauncher", appContext.getPackageName());
+        assertEquals("com.ariasaroject.param", appContext.getPackageName());
     }
 }

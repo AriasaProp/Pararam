@@ -1,4 +1,4 @@
-package com.ariasaroject.androidlauncher;
+package com.ariasaroject.pararam;
 
 import static org.junit.jupiter.api.Assertions.*;
 

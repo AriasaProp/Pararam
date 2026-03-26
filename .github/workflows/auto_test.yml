@@ -9,14 +9,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
-      - name: Build
-        uses: gradle/gradle-build-action@v2.4.2
+      - uses: actions/checkout@v6.0.2
+      - uses: gradle/actions/setup-gradle@v5
         with:
-          gradle-version: 8.4
-          arguments: build -Prelease
-      - name: Upload Android Artifacts
-        uses: actions/upload-artifact@v3.1.2
+          gradle-version: current
+      - run: gradle wrapper --gradle-version latest
+      - run: gradle build -Prelease
+      - uses: actions/upload-artifact@v7
         with:
           name: APK
           path: ${{ github.workspace }}/app/build/outputs/apk/release/app-release.apk

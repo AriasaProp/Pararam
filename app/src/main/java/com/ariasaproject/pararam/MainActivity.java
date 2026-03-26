@@ -1,4 +1,4 @@
-package com.ariasaproject.androidlauncher;
+package com.ariasaproject.pararam;
 
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
