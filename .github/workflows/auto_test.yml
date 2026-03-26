@@ -6,13 +6,30 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
-      - uses: gradle/actions/setup-gradle@v5
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+      - name: Gradle Prep
+        uses: gradle/actions/setup-gradle@v5
         with:
           gradle-version: current
-      - run: gradle wrapper --gradle-version latest
-      - run: gradle build -Prelease
-      - uses: actions/upload-artifact@v7
+      - name: Update Gradle Wrapper
+        run: |
+          if ! gradle wrapper --gradle-version latest; then
+            echo "Update Wrapper Failure"
+            exit 1
+          fi
+          if ! git add .; then
+            echo "No update"
+            exit 0
+          fi
+          git config --global user.email "ikomangwidiadaariasa12@gmail.com"
+          git config --global user.name "AriasaProp-Actions"
+          git commit -m "update gradle wrapper"
+          git push
+      - name: Build
+        run: gradle build
+      - name: Upload
+        uses: actions/upload-artifact@v7
         with:
           name: APK
           path: ${{ github.workspace }}/app/build/outputs/apk/release/app-release.apk
