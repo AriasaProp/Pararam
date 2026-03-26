@@ -24,8 +24,6 @@ android {
         multiDexEnabled true
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-        minifyEnabled true
-        testCoverageEnabled true
     }
     testOptions.unitTests.all {
         testLogging {
