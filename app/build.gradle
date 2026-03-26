@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+group = 'com.ariasaproject.pararam'
+
 android {
     signingConfigs {
         mainSign {
@@ -11,10 +13,10 @@ android {
     }
     compileSdkVersion 36
     ndkVersion '27.3.13750724'
-    namespace rootProject.comp
+    namespace group
     defaultConfig {
         label rootProject.name
-        applicationId rootProject.comp
+        applicationId group
         minSdkVersion 24
         targetSdkVersion 33
         versionCode 0
