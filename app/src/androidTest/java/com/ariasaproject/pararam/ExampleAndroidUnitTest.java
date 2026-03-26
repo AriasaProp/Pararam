@@ -1,19 +1,19 @@
-package com.ariasaroject.pararam;
+package com.ariasaproject.pararam;
 
 import static org.junit.Assert.*;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit5;
+import android.support.test.runner.AndroidJUnit6;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(AndroidJUnit5.class)
-public class ExampleInstrumentedTest {
+@RunWith(AndroidJUnit6.class)
+public class ExampleAndroidUnitTest {
     @Test
     public void useAppContext() throws Exception {
         Context appContext = InstrumentationRegistry.getTargetContext();
-        assertEquals("com.ariasaroject.pararam", appContext.getPackageName());
+        assertEquals("com.ariasaproject.pararam", appContext.getPackageName());
     }
 }

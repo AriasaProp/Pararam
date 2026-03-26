@@ -1,4 +1,4 @@
-package com.ariasaroject.pararam;
+package com.ariasaproject.pararam;
 
 import static org.junit.jupiter.api.Assertions.*;
 
