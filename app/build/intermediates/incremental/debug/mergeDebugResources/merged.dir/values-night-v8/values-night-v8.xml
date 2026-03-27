@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="base">#000000</color>
+    <color name="oposite">#FFFFFF</color>
+    <color name="opositeTransparent">#50FFFFFF</color>
+    <style name="BaseTheme" parent="Theme.AppCompat.DayNight">
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+        <item name="android:colorPrimary">#FF000000</item>
+        <item name="android:colorPrimaryDark">#FF898989</item>
+        <item name="android:colorAccent">#FF056f00</item>
+        <item name="android:textColor">#FFF9F9F9</item>
+    </style>
+    <style name="Theme.AppCompat.DayNight" parent="Theme.AppCompat"/>
+    <style name="Theme.AppCompat.DayNight.DarkActionBar" parent="Theme.AppCompat"/>
+    <style name="Theme.AppCompat.DayNight.Dialog" parent="Theme.AppCompat.Dialog"/>
+    <style name="Theme.AppCompat.DayNight.Dialog.Alert" parent="Theme.AppCompat.Dialog.Alert"/>
+    <style name="Theme.AppCompat.DayNight.Dialog.MinWidth" parent="Theme.AppCompat.Dialog.MinWidth"/>
+    <style name="Theme.AppCompat.DayNight.DialogWhenLarge" parent="Theme.AppCompat.DialogWhenLarge"/>
+    <style name="Theme.AppCompat.DayNight.NoActionBar" parent="Theme.AppCompat.NoActionBar"/>
+    <style name="ThemeOverlay.AppCompat.DayNight" parent="ThemeOverlay.AppCompat.Dark"/>
+</resources>

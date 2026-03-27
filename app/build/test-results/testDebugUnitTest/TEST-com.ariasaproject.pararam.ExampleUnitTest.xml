@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ariasaproject.pararam.ExampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-03-27T13:46:35.305Z" hostname="runnervmrg6be" time="0.006">
+  <properties/>
+  <testcase name="addition_isCorrect" classname="com.ariasaproject.pararam.ExampleUnitTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

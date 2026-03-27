@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+  <cloud-backup>
+    <!--
+    <include/>
+    <exclude/>
+    !-->
+  </cloud-backup>
+  <!--
+  <data-transfer>
+    <include/>
+    <exclude/>
+  </data-transfer>
+  !-->
+</data-extraction-rules>
