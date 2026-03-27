@@ -1,8 +1,10 @@
 plugins {
-    id("com.android.application")
+    alias(libs.plugins.android.application)
 }
 
-var company = "com.ariasaproject.pararam"
+val packageName: String by rootProject.extra
+val version: Int by rootProject.extra
+val versionName: String by rootProject.extra
 
 android {
     signingConfigs {
@@ -14,16 +16,17 @@ android {
         }
     }
 
-    compileSdk = 36
-    ndkVersion = 
-    namespace = company.toString()
+    compileSdk = libs.versions.compileSdk.get().toInt()
+    ndkVersion = libs.versions.ndk.get()
+    namespace = libs.versions.packageName.get()
+    
 
     defaultConfig {
-        minSdk = 28
-        targetSdk = 33
-        applicationId = company.toString()
-        versionCode = 1
-        versionName = "v0.0.0"
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+        applicationId = libs.versions.packageName.get()
+        versionCode = libs.versions.app.get().toInt()
+        versionName = libs.versions.appv.get().toString()
         signingConfig = signingConfigs.getByName("mainSign")
         multiDexEnabled = true
 
@@ -31,21 +34,36 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        release {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-release.pro")
+        }
+        debug {
+            applicationIdSuffix = ".debug"
+            isDebuggable = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-debug.pro")
+        }
+    }
+    testOptions {
+        unitTests {
+            all {
+                // failOnNoDiscoveredTests = false
+                // setup
+                // testLogging.showStandardStreams = true
+            }
         }
     }
 }
 
 dependencies {
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.core:core:1.7.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.recyclerview)
     
-    testImplementation("junit:junit:6.0.3")
+    testImplementation(libs.junit)
     
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.test.espresso)
 }
