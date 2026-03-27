@@ -27,7 +27,7 @@ jobs:
         with:
           gradle-version: wrapper
       - name: Build
-        run: gradle build
+        run: gradle :app:build
       - name: Upload Build
         run: |
           git config --global user.email "ikomangwidiadaariasa12@gmail.com"
