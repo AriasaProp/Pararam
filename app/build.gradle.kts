@@ -15,42 +15,37 @@ android {
     }
 
     compileSdk = 36
-    ndkVersion = "27.3.13750724"
+    ndkVersion = 
     namespace = company.toString()
 
     defaultConfig {
-        applicationId = company.toString()
-        minSdk = 24
+        minSdk = 28
         targetSdk = 33
+        applicationId = company.toString()
         versionCode = 1
         versionName = "v0.0.0"
         signingConfig = signingConfigs.getByName("mainSign")
         multiDexEnabled = true
-        proguardFiles(
-            getDefaultProguardFile("proguard-android-optimize.txt"),
-            file("proguard-rules.pro")
-        )
+
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    // testOptions {
-    //     unitTests.all {
-    //             events("passed", "skipped", "failed", "standardOut", "standardError")
-    //         testLogging.showStandardStreams = true
-    //         testLogging.exceptionFormat = "full"
-    //     }
-    // }
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+    }
 }
 
 dependencies {
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.1.0") {
-        exclude(group = "com.android.support", module = "support-annotations")
-    }
-
-    implementation("androidx.core:core:1.7.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:6.0.3")
+    implementation("androidx.core:core:1.7.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    
+    testImplementation("junit:junit:6.0.3")
+    
+    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 }
