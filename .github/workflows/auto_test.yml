@@ -26,16 +26,6 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
         with:
           gradle-version: current
-      - name: Update Gradle Wrapper to latest
-        id: update_wrapper
-        run: |
-          set -euo pipefail
-          if gradle wrapper --gradle-version latest; then
-            echo "gradle-wrapper update command succeeded"
-          else
-            echo "Gradle wrapper update command failed"
-            exit 1
-          fi
 
       - name: Push changes
         env:

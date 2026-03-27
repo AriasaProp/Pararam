@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
 }
 
-group = "com.ariasaproject.pararam"
+var company = "com.ariasaproject.pararam"
 
 android {
     signingConfigs {
@@ -16,10 +16,10 @@ android {
 
     compileSdk = 36
     ndkVersion = "27.3.13750724"
-    namespace = group.toString()
+    namespace = company.toString()
 
     defaultConfig {
-        applicationId = group.toString()
+        applicationId = company.toString()
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -33,15 +33,13 @@ android {
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    testOptions {
-        unitTests.all {
-            testLogging {
-                events("passed", "skipped", "failed", "standardOut", "standardError")
-                showStandardStreams = true
-                exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
-            }
-        }
-    }
+    // testOptions {
+    //     unitTests.all {
+    //             events("passed", "skipped", "failed", "standardOut", "standardError")
+    //         testLogging.showStandardStreams = true
+    //         testLogging.exceptionFormat = "full"
+    //     }
+    // }
 }
 
 dependencies {
