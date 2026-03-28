@@ -1,8 +1,0 @@
-com.ariasaproject.pararam.app-pngs-0 /home/runner/work/Pararam/Pararam/app/build/generated/res/pngs/release
-com.ariasaproject.pararam.app-updated_navigation_xml-1 /home/runner/work/Pararam/Pararam/app/build/generated/updated_navigation_xml/release
-com.ariasaproject.pararam.app-packageReleaseResources-2 /home/runner/work/Pararam/Pararam/app/build/intermediates/incremental/release/packageReleaseResources/merged.dir
-com.ariasaproject.pararam.app-packageReleaseResources-3 /home/runner/work/Pararam/Pararam/app/build/intermediates/incremental/release/packageReleaseResources/stripped.dir
-com.ariasaproject.pararam.app-merged-not-compiled-resources-4 /home/runner/work/Pararam/Pararam/app/build/intermediates/merged-not-compiled-resources/release
-com.ariasaproject.pararam.app-release-5 /home/runner/work/Pararam/Pararam/app/build/intermediates/merged_res/release/mergeReleaseResources
-com.ariasaproject.pararam.app-main-6 /home/runner/work/Pararam/Pararam/app/src/main/res
-com.ariasaproject.pararam.app-release-7 /home/runner/work/Pararam/Pararam/app/src/release/res

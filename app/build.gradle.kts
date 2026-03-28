@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -15,7 +16,6 @@ android {
     compileSdk = libs.versions.compileSdk.get().toInt()
     ndkVersion = libs.versions.ndk.get()
     namespace = libs.versions.packageName.get()
-    
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
@@ -53,27 +53,14 @@ android {
 }
 
 dependencies {
-    implenentation(libs.androidx.activity.compose)
-    implenentation(libs.androidx.activity.ktx)
-    implenentation(libs.androidx.compose.bom)
-    implenentation(libs.androidx.compose.foundation)
-    implenentation(libs.androidx.compose.foundation.layout)
-    implenentation(libs.androidx.compose.material.iconsExtended)
-    implenentation(libs.androidx.compose.material3)
-    implenentation(libs.androidx.compose.runtime)
-    implenentation(libs.androidx.compose.ui.tooling)
-    implenentation(libs.androidx.compose.ui.ui)
-    implenentation(libs.androidx.compose.ui.util)
-    implenentation(libs.androidx.core.ktx)
-    implenentation(libs.androidx.dataStore.core)
-    implenentation(libs.androidx.hilt.lifecycle.viewmodel.compose)
-    implenentation(libs.androidx.hilt.navigation.compose)
-    implenentation(libs.androidx.lifecycle.runtime.compose)
-    implenentation(libs.androidx.lifecycle.runtime.ktx)
-    implenentation(libs.androidx.lifecycle.viewmodel.compose)
-    implenentation(libs.androidx.lifecycle.viewmodel.ktx)
-    implenentation(libs.androidx.navigation.compose)
-
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
+    
     testImplementation(libs.junit)
     
     androidTestImplementation(libs.androidx.test.junit)

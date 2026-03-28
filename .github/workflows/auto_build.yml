@@ -29,15 +29,7 @@ jobs:
           gradle-version: wrapper
       - name: Build
         run: gradle build -Pdebug
-      - name: Upload Build
-        run: |
-          git config --global user.email "ikomangwidiadaariasa12@gmail.com"
-          git config --global user.name "AriasaProp [Github Actions]"
-          git add .
-          if git commit -m "build by Github Actions"; then
-              git push
-          fi
-      - name: Upload APK artifact
+      - name: Upload Build Result
         uses: actions/upload-artifact@v7
         with:
           name: APK
