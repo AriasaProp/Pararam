@@ -35,11 +35,6 @@ android {
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-release.pro")
         }
-        debug {
-            applicationIdSuffix = ".debug"
-            isDebuggable = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-debug.pro")
-        }
     }
     testOptions {
         unitTests {
