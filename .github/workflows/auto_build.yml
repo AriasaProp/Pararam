@@ -1,9 +1,10 @@
-name: Auto-Test
+name: Auto Build
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - '.github/workflows/auto_build.yml'
+      - 'app/**'
   workflow_dispatch:
 
 permissions:
@@ -27,7 +28,7 @@ jobs:
         with:
           gradle-version: wrapper
       - name: Build
-        run: gradle :app:build
+        run: gradle build -Pdebug
       - name: Upload Build
         run: |
           git config --global user.email "ikomangwidiadaariasa12@gmail.com"
@@ -36,8 +37,8 @@ jobs:
           if git commit -m "build by Github Actions"; then
               git push
           fi
-#      - name: Upload APK artifact
-        # uses: actions/upload-artifact@v7
-        # with:
-        #   name: APK
-        #   path: app/build/outputs/apk/release/app-release.apk
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: APK
+          path: app/build
