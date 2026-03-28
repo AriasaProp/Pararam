@@ -1,13 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.compose.compiler)
 }
 
 android {
-    buildFeatures {
-        compose = true
-    }
     signingConfigs {
         create("mainSign") {
             storeFile = file("sign.keystore")
