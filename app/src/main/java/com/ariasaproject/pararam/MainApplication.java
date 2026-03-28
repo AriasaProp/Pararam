@@ -18,7 +18,6 @@ public class MainApplication extends Application, Thread.UncaughtExceptionHandle
     @Override
     public void onCreate() {
         super.onCreate();
-        Thread.setDefaultUncaughtExceptionHandler(this)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notificationManagerWrapper.createNotificationChannel(
@@ -39,5 +38,4 @@ public class MainApplication extends Application, Thread.UncaughtExceptionHandle
         super.onConfigurationChanged(newConfig);
     }
     
-    public void unchaught
 }
