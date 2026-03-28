@@ -28,7 +28,7 @@ jobs:
         with:
           gradle-version: wrapper
       - name: Build
-        run: gradle build
+        run: gradle build --scan
       - name: Upload Build Result
         uses: actions/upload-artifact@v7
         with:
