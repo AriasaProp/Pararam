@@ -29,7 +29,7 @@ android {
         applicationId = libs.versions.packageName.get()
         versionCode = libs.versions.app.get().toInt()
         versionName = libs.versions.appv.get()
-        signingConfig = signingConfigs.getByName("debugSign")
+        // signingConfig = signingConfigs["debugSign"]
         multiDexEnabled = true
         //isMinifyEnabled = true
         //isShrinkResources = true
