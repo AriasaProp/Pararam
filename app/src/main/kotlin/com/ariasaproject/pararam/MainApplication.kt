@@ -10,7 +10,7 @@ class MainApplication : Application() {
     override fun onLowMemory() {
         super.onLowMemory()
     }
-    override fun ConfigurationChanged(newConfig : Configuration?) {
+    override fun ConfigurationChanged(newConfig : Configuration) {
         super.onConfigurationChanged(newConfig)
     }
 }
