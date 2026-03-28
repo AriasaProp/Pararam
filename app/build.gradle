@@ -11,10 +11,10 @@ android {
     }
     compileSdkVersion 36
     ndkVersion '27.3.13750724'
-    namespace rootProject.comp
+    namespace 'com.ariasaproject.pararam'
+
     defaultConfig {
-        label rootProject.name
-        applicationId rootProject.comp
+        applicationId 'com.ariasaproject.pararam'
         minSdkVersion 24
         targetSdkVersion 33
         versionCode 0
