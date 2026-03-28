@@ -28,9 +28,9 @@ jobs:
         with:
           gradle-version: wrapper
       - name: Build
-        run: gradle build --scan
-      - name: Upload Build Result
+        run: gradle build --stacktrace --info | tee build-log.txt
+      - name: Upload Log
         uses: actions/upload-artifact@v7
         with:
-          name: APK
-          path: app/build
+          name: Log
+          path: build-log.txt
