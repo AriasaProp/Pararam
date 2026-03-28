@@ -5,12 +5,6 @@ plugins {
 
 android {
     signingConfigs {
-        create("debugSign") {
-            storeFile = file("debug.keystore")
-            storePassword = "android"
-            keyAlias = "android"
-            keyPassword = "android"
-        }
         create("mainSign") {
             storeFile = file("sign.keystore")
             storePassword = "123456"
@@ -29,7 +23,7 @@ android {
         applicationId = libs.versions.packageName.get()
         versionCode = libs.versions.app.get().toInt()
         versionName = libs.versions.appv.get()
-        // signingConfig = signingConfigs["debugSign"]
+        signingConfig = signingConfigs["mainSign"]
         multiDexEnabled = true
         //isMinifyEnabled = true
         //isShrinkResources = true
@@ -40,8 +34,6 @@ android {
     testOptions {
         unitTests {
             all {
-                // failOnNoDiscoveredTests = false
-                // setup
                 // testLogging.showStandardStreams = true
             }
         }
