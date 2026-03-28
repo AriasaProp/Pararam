@@ -22,11 +22,11 @@ android {
         targetSdk = libs.versions.targetSdk.get().toInt()
         applicationId = libs.versions.packageName.get()
         versionCode = libs.versions.app.get().toInt()
-        versionName = libs.versions.appv.get().toString()
+        versionName = libs.versions.appv.get()
         signingConfig = signingConfigs.getByName("mainSign")
         multiDexEnabled = true
-        isMinifyEnabled = true
-        isShrinkResources = true
+        //isMinifyEnabled = true
+        //isShrinkResources = true
         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
 
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
