@@ -25,16 +25,11 @@ android {
         versionName = libs.versions.appv.get().toString()
         signingConfig = signingConfigs.getByName("mainSign")
         multiDexEnabled = true
+        isMinifyEnabled = true
+        isShrinkResources = true
+        proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
 
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-release.pro")
-        }
     }
     testOptions {
         unitTests {
