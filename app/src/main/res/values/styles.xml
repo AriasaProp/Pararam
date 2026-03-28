@@ -1,20 +1,17 @@
 <resources>
-    <style name="BaseTheme" parent="Theme.AppCompat.Light">
+    <style name="BaseTheme" parent="android:Theme.Material.Light">
         <item name="android:textColorPrimary">#FF0F0F0F</item>
         <item name="android:colorPrimary">#FFFFFFFF</item>
         <item name="android:colorPrimaryDark">#FF333333</item>
         <item name="android:colorAccent">#FF259024</item>
         <item name="android:textColor">#FF050505</item>
     </style>
-
     <style name="AppTheme" parent="BaseTheme">
-    		<!--
-    		<item name="android:windowIsTranslucent">true</item>
-				<item name="android:windowBackground">@android:color/transparent</item>
 		    <item name="windowActionBar">false</item>
+    </style>
+    <style name="LauncherTheme" parent="BaseTheme">
+				<item name="android:windowBackground">@android:color/transparent</item>
 		    <item name="windowNoTitle">true</item>
-		    <item name="android:windowFullscreen">true</item>
-    		!-->
     </style>
     
 </resources>

@@ -25,6 +25,7 @@
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|screenSize|layoutDirection|density"
+            android:theme="@style/LauncherTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
