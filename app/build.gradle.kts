@@ -4,6 +4,9 @@ plugins {
 }
 
 android {
+    buildFeatures {
+        compose = true
+    }
     signingConfigs {
         create("mainSign") {
             storeFile = file("sign.keystore")
