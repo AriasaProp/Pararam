@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import java.lang.StringBuilder;
 import java.lang.String;
 
-public class MainApplication extends Application, Thread.UncaughtExceptionHandler {
+public class MainApplication extends Application {
 
     @Override
     public void onCreate() {
