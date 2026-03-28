@@ -5,6 +5,12 @@ plugins {
 
 android {
     signingConfigs {
+        create("debugSign") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "android"
+            keyPassword = "android"
+        }
         create("mainSign") {
             storeFile = file("sign.keystore")
             storePassword = "123456"
@@ -23,7 +29,7 @@ android {
         applicationId = libs.versions.packageName.get()
         versionCode = libs.versions.app.get().toInt()
         versionName = libs.versions.appv.get()
-        signingConfig = signingConfigs.getByName("mainSign")
+        signingConfig = signingConfigs.getByName("debugSign")
         multiDexEnabled = true
         //isMinifyEnabled = true
         //isShrinkResources = true
