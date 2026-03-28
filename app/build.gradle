@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        mainSign {
+            storeFile file('sign.keystore')
+            storePassword '123456'
+            keyAlias = 'demo'
+            keyPassword '123456'
+        }
+    }
+    compileSdkVersion 36
+    ndkVersion '27.3.13750724'
+    namespace 'com.ariasaproject.pararam'
+
+    defaultConfig {
+        applicationId 'com.ariasaproject.pararam'
+        minSdkVersion 24
+        targetSdkVersion 33
+        versionCode 1
+        versionName 'v0.0.0'
+        signingConfig signingConfigs.mainSign
+        multiDexEnabled true
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            testCoverageEnabled true
+        }
+    }
+    testOptions.unitTests.all {
+        testLogging {
+            events "passed", "skipped", "failed", "standardOut", "standardError"
+            showStandardStreams true
+            exceptionFormat 'full'
+        }
+    }
+}
+dependencies {
+    implementation 'androidx.core:core:1.15.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    
+    testImplementation 'junit:junit:4.13.0'
+}

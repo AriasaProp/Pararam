@@ -1,12 +1,15 @@
 <resources>
-    <style name="BaseTheme" parent="@android:style/Theme.Material.Light">
+    <style name="BaseTheme" parent="Theme.AppCompat.Light">
     </style>
     <style name="AppTheme" parent="BaseTheme">
 		    <item name="android:windowActionBar">false</item>
     </style>
     <style name="LauncherTheme" parent="BaseTheme">
+    		<item name="android:windowIsTranslucent">true</item>
 				<item name="android:windowShowWallpaper">true</item>
+		    <item name="android:windowActionBar">false</item>
 		    <item name="android:windowNoTitle">true</item>
+		    <item name="android:windowFullscreen">true</item>
     </style>
     
 </resources>

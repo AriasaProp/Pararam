@@ -7,30 +7,31 @@ on:
       - 'app/**'
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.2
         with:
           persist-credentials: true
+
       - name: Set up JDK
         uses: actions/setup-java@v5.2.0
         with:
           distribution: temurin
           java-version: '18'
+
       - name: Set up Gradle CLI
         uses: gradle/actions/setup-gradle@v6.0.1
         with:
           gradle-version: wrapper
+
       - name: Build
-        run: gradle build --stacktrace --info | tee build-log.txt
-      - name: Upload Log
+        run: gradle build
+
+      - name: Upload Build
         uses: actions/upload-artifact@v7
         with:
-          name: Log
-          path: build-log.txt
+          name: APK
+          path: app/build
