@@ -1,4 +1,6 @@
-apply plugin: 'com.android.application'
+plugins {
+  alias(libs.plugins.android.application)
+}
 
 android {
     signingConfigs {
@@ -44,12 +46,12 @@ android {
     }
 }
 dependencies {
-    implementation 'androidx.core:core:1.15.0'
-    implementation 'androidx.appcompat:appcompat:1.7.1'
-    implementation 'androidx.recyclerview:recyclerview:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation libs.androidx.core
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.recyclerview
+    implementation libs.androidx.constraintlayout
     
-    testImplementation 'junit:junit:4.13.0'
+    testImplementation libs.junit
     
-    androidTestImplementation 'androidx.test.ext:junit:1.3.0'
+    androidTestImplementation libs.androidx.test.junit
 }
