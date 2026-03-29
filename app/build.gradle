@@ -11,16 +11,16 @@ android {
             keyPassword '123456'
         }
     }
-    compileSdkVersion 35
-    ndkVersion '27.3.13750724'
-    namespace 'com.ariasaproject.pararam'
+    compileSdkVersion libs.versions.compileSdk as Integer
+    ndkVersion libs.versions.ndk
+    namespace libs.versions.packageName
 
     defaultConfig {
-        applicationId 'com.ariasaproject.pararam'
-        minSdkVersion 24
-        targetSdkVersion 33
+        applicationId libs.versions.packageName
+        minSdkVersion libs.versions.minSdk as Integer
+        targetSdkVersion libs.versions.targetSdk as Integer
         versionCode 1
-        versionName 'v0.0.0'
+        versionName libs.versions.appv
         signingConfig signingConfigs.mainSign
         multiDexEnabled true
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -30,7 +30,6 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            testCoverageEnabled true
         }
         debug {
             debuggable true
