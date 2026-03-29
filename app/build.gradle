@@ -11,14 +11,14 @@ android {
             keyPassword '123456'
         }
     }
-    compileSdkVersion libs.versions.compileSdk as Integer
+    compileSdkVersion libs.versions.compileSdk.get() as Integer
     ndkVersion libs.versions.ndk
     namespace libs.versions.packageName
 
     defaultConfig {
         applicationId libs.versions.packageName
-        minSdkVersion libs.versions.minSdk as Integer
-        targetSdkVersion libs.versions.targetSdk as Integer
+        minSdkVersion libs.versions.minSdk.get() as Integer
+        targetSdkVersion libs.versions.targetSdk.get() as Integer
         versionCode 1
         versionName libs.versions.appv
         signingConfig signingConfigs.mainSign
