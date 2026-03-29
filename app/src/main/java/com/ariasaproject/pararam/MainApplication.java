@@ -21,9 +21,9 @@ public class MainApplication extends Application {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notificationManagerWrapper.createNotificationChannel(
-                channelId = AndroidNotificationManagerWrapper.CHANNEL_ID,
-                name = getString(R.string.app_name),
-                importance = NotificationManager.IMPORTANCE_DEFAULT,
+                AndroidNotificationManagerWrapper.CHANNEL_ID,
+                getString(R.string.app_name),
+                NotificationManager.IMPORTANCE_DEFAULT,
             );
         }
     }
