@@ -12,15 +12,15 @@ android {
         }
     }
     compileSdkVersion libs.versions.compileSdk.get() as Integer
-    ndkVersion libs.versions.ndk
-    namespace libs.versions.packageName
+    ndkVersion libs.versions.ndk.get() as String
+    namespace libs.versions.packageName.get() as String
 
     defaultConfig {
-        applicationId libs.versions.packageName
+        applicationId libs.versions.packageName.get() as String
         minSdkVersion libs.versions.minSdk.get() as Integer
         targetSdkVersion libs.versions.targetSdk.get() as Integer
-        versionCode 1
-        versionName libs.versions.appv
+        versionCode libs.versions.app.get() as Integer
+        versionName libs.versions.appv.get() as String
         signingConfig signingConfigs.mainSign
         multiDexEnabled true
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
