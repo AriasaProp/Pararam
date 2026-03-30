@@ -31,18 +31,40 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import java.util.List;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity, Adapter<MainActivity.AppHolder> {
+public class MainActivity extends AppCompatActivity {
 		List<ResolveInfo> apps = new ArrayList<ResolveInfo>();
-		RecyclerView cv;
+		Adapter<AppHolder> adpt;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        cv = (RecyclerView) findViewById(R.id.apps);
+        RecyclerView cv = (RecyclerView) findViewById(R.id.apps);
         cv.setLayoutManager(new GridLayoutManager(this, 3, RecyclerView.HORIZONTAL, false));
-        cv.setAdapter(this);
+        cv.setAdapter(adpt = new Adapter<AppHolder>() {
+            // RecyclerView adapter listener
+            final LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+        
+            @Override
+            public AppHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View itemView = inflater.inflate(R.layout.app_layout, parent, false);
+                return new AppHolder(itemView);
+            }
+        
+            @Override
+            public void onBindViewHolder(AppHolder holder, int position) {
+                final ResolveInfo c = apps.get(position);
+                final PackageManager pm = MainActivity.this.getPackageManager();
+                holder.label.setText(c.loadLabel(pm));
+                holder.icon.setImageDrawable(c.loadIcon(pm));
+            }
+        
+            @Override
+            public int getItemCount() {
+                return apps.size();
+            }
+        });
 		}
 
     @Override
@@ -63,8 +85,12 @@ public class MainActivity extends AppCompatActivity, Adapter<MainActivity.AppHol
     
     @Override
     protected void onResume() {
-        updateAppList();
-        super.notifyDataSetChanged();
+        // update App list
+    		Intent intent = new Intent(Intent.ACTION_MAIN, null);
+    		intent.addCategory(Intent.CATEGORY_LAUNCHER);
+    		apps = getPackageManager().queryIntentActivities(intent, 0);
+        // notify adapter
+        adpt.notifyDataSetChanged();
         super.onResume();
     }
 
@@ -110,13 +136,6 @@ public class MainActivity extends AppCompatActivity, Adapter<MainActivity.AppHol
         }
     }
 
-    
-    private void updateAppList(){
-    		Intent intent = new Intent(Intent.ACTION_MAIN, null);
-    		intent.addCategory(Intent.CATEGORY_LAUNCHER);
-    		apps = getPackageManager().queryIntentActivities(intent, 0);
-    }
-    
     class AppHolder extends RecyclerView.ViewHolder {
         TextView label;
         ImageView icon;
@@ -126,27 +145,6 @@ public class MainActivity extends AppCompatActivity, Adapter<MainActivity.AppHol
             label = itemView.findViewById(R.id.text_view);
             icon = itemView.findViewById(R.id.image_view);
         }
-    }
-    // RecyclerView adapter listener
-    final LayoutInflater inflater = LayoutInflater.from(this);
-
-    @Override
-    public AppHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = inflater.inflate(R.layout.app_layout, parent, false);
-        return new AppHolder(itemView);
-    }
-
-    @Override
-    public void onBindViewHolder(AppHolder holder, int position) {
-        final ResolveInfo c = apps.get(position);
-        final PackageManager pm = getPackageManager();
-        holder.label.setText(c.loadLabel(pm));
-        holder.icon.setImageDrawable(c.loadIcon(pm));
-    }
-
-    @Override
-    public int getItemCount() {
-        return apps.size();
     }
 }
 
