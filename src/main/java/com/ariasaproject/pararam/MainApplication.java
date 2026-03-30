@@ -18,14 +18,6 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            notificationManagerWrapper.createNotificationChannel(
-                AndroidNotificationManagerWrapper.CHANNEL_ID,
-                getString(R.string.app_name),
-                NotificationManager.IMPORTANCE_DEFAULT
-            );
-        }
     }
 
     @Override
