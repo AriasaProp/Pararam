@@ -31,17 +31,18 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import java.util.List;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements Adapter<MainActivity.AppHolder> {
+public class MainActivity extends AppCompatActivity, Adapter<MainActivity.AppHolder> {
 		List<ResolveInfo> apps = new ArrayList<ResolveInfo>();
+		RecyclerView cv;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        final RecyclerView cv = (RecyclerView) findViewById(R.id.apps);
+        cv = (RecyclerView) findViewById(R.id.apps);
         cv.setLayoutManager(new GridLayoutManager(this, 3, RecyclerView.HORIZONTAL, false));
-        requestActivityPermission();
+        cv.setAdapter(this);
 		}
 
     @Override
@@ -55,15 +56,20 @@ public class MainActivity extends AppCompatActivity implements Adapter<MainActiv
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        requestActivityPermission();
+    }
+    
+    @Override
     protected void onResume() {
-        super.onResume();
         updateAppList();
-        cv.swapAdapter(this);
+        super.notifyDataSetChanged();
+        super.onResume();
     }
 
     @Override
     protected void onPause() {
-        cv.swapAdapter(null);
         super.onPause();
     }
 
