@@ -30,8 +30,13 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            testCoverageEnabled true
         }
+        debug {
+            applicationIdSuffix = ".debug"
+            testCoverageEnabled true
+            debuggable true
+        }
+        
     }
     testOptions.unitTests.all {
         testLogging {

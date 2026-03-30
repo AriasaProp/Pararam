@@ -23,7 +23,7 @@ public class MainApplication extends Application {
             notificationManagerWrapper.createNotificationChannel(
                 AndroidNotificationManagerWrapper.CHANNEL_ID,
                 getString(R.string.app_name),
-                NotificationManager.IMPORTANCE_DEFAULT,
+                NotificationManager.IMPORTANCE_DEFAULT
             );
         }
     }
