@@ -2,15 +2,18 @@ package com.ariasaproject.pararam;
 
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
+import android.annotation.RequiresApi;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
+import android.content.pm.PackageManager.ApplicationInfoFlags;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -32,7 +35,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-		List<ResolveInfo> apps = new ArrayList<ResolveInfo>();
+		List<PackageInfo> apps = new ArrayList<PackageInfo>();
 		Adapter<AppHolder> adpt;
     
     @Override
@@ -54,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
         
             @Override
             public void onBindViewHolder(AppHolder holder, int position) {
-                final ResolveInfo c = apps.get(position);
+                final PackageInfo c = apps.get(position);
                 final PackageManager pm = MainActivity.this.getPackageManager();
-                holder.label.setText(c.loadLabel(pm));
-                holder.icon.setImageDrawable(c.loadIcon(pm));
+                holder.label.setText(c.applicationInfo.loadLabel(pm).toString());
+                holder.icon.setImageDrawable(c.applicationInfo.loadIcon(pm));
             }
         
             @Override
@@ -83,12 +86,21 @@ public class MainActivity extends AppCompatActivity {
         requestActivityPermission();
     }
     
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private List<PackageInfo> getApps_Api33(PackageManager pm){
+      return pm.getInstalledPackages(ApplicationInfoFlags.getValue(0));
+    }
+    
     @Override
     protected void onResume() {
         // update App list
     		Intent intent = new Intent(Intent.ACTION_MAIN, null);
-    		intent.addCategory(Intent.CATEGORY_LAUNCHER);
-    		apps = getPackageManager().queryIntentActivities(intent, 0);
+        final PackageManager pm = getPackageManager();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+          apps = getApps_Api33(pm);
+        } else {
+          apps = pm.getInstalledPackages();
+        }
         // notify adapter
         adpt.notifyDataSetChanged();
         super.onResume();
